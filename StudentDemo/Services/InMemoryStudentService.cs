@@ -22,4 +22,24 @@ public class InMemoryStudentService : IStudentService
         student.Id = _students.Count == 0 ? 1 : _students.Max(s => s.Id) + 1;
         _students.Add(student);
     }
+
+    public bool Update(Student student)
+    {
+        var existing = GetById(student.Id);
+        if (existing is null) return false;
+
+        existing.FullName = student.FullName;
+        existing.Email = student.Email;
+        existing.Age = student.Age;
+        return true;
+    }
+
+    public bool Delete(int id)
+    {
+        var existing = GetById(id);
+        if (existing is null) return false;
+
+        _students.Remove(existing);
+        return true;
+    }
 }
