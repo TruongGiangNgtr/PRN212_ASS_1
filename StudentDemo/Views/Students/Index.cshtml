@@ -1,0 +1,41 @@
+@model IEnumerable<Student>
+@{
+    ViewData["Title"] = "Sinh viên";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">Danh sách sinh viên</h1>
+    <a class="btn btn-primary" asp-action="Create">Thêm sinh viên</a>
+</div>
+
+@if (TempData["Success"] is string ok)
+{
+    <div class="alert alert-success">@ok</div>
+}
+
+<table class="table table-striped align-middle">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Họ tên</th>
+            <th>Email</th>
+            <th>Tuổi</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.Id</td>
+                <td>@s.FullName</td>
+                <td>@s.Email</td>
+                <td>@s.Age</td>
+                <td class="text-end">
+                    <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@s.Id">Sửa</a>
+                    <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@s.Id">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

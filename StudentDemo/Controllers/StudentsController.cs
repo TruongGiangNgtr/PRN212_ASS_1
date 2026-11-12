@@ -13,4 +13,9 @@ public class StudentsController : Controller
     {
         _studentService = studentService;
     }
+
+    public IActionResult Index()
+    {
+        return View(_studentService.GetAll());
+    }
 }

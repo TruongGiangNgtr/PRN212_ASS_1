@@ -20,6 +20,9 @@ public class AccountController : Controller
     [HttpGet]
     public IActionResult Login(string? returnUrl = null)
     {
+        if (User.Identity?.IsAuthenticated == true)
+            return RedirectToAction("Index", "Students");
+
         ViewData["ReturnUrl"] = returnUrl;
         return View();
     }
