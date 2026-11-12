@@ -1,0 +1,37 @@
+@model IEnumerable<User>
+@{
+    ViewData["Title"] = "Người dùng";
+}
+
+<h1>Người dùng</h1>
+
+@if (TempData["Success"] is string ok)
+{
+    <div class="alert alert-success">@ok</div>
+}
+@if (TempData["Error"] is string err)
+{
+    <div class="alert alert-danger">@err</div>
+}
+
+<p><a class="btn btn-primary" asp-action="Create">Thêm người dùng</a></p>
+
+<table class="table">
+    <thead>
+        <tr><th>Id</th><th>Tên đăng nhập</th><th>Họ tên</th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Id</td>
+                <td>@u.Username</td>
+                <td>@u.FullName</td>
+                <td>
+                    <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@u.Id">Sửa</a>
+                    <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@u.Id">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
