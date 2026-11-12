@@ -1,0 +1,13 @@
+@model Student
+@{
+    ViewData["Title"] = "Thêm sinh viên";
+}
+
+<h1 class="mb-3">Thêm sinh viên</h1>
+
+<form asp-action="Create" method="post" class="col-md-6">
+    <partial name="_StudentForm" model="Model" />
+
+    <button type="submit" class="btn btn-primary">Lưu</button>
+    <a class="btn btn-link" asp-action="Index">Quay lại danh sách</a>
+</form>
