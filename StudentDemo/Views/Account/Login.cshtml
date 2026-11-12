@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Đăng nhập";
+}
+
+<h1>Đăng nhập</h1>
+
+<form method="post" asp-action="Login" asp-route-returnUrl="@ViewData["ReturnUrl"]" style="max-width:400px">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label for="username" class="form-label">Tên đăng nhập</label>
+        <input id="username" name="username" class="form-control" value="@ViewData["Username"]" autofocus />
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Mật khẩu</label>
+        <input id="password" name="password" type="password" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+</form>
