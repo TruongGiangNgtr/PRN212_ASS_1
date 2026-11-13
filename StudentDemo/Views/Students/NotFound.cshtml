@@ -1,0 +1,12 @@
+@model int
+@{
+    ViewData["Title"] = "Không tìm thấy";
+}
+
+<h1 class="mb-3">Không tìm thấy</h1>
+
+<div class="alert alert-warning">
+    Không tìm thấy sinh viên có Id = @Model.
+</div>
+
+<a class="btn btn-link" asp-action="Index">Quay lại danh sách</a>
